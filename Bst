@@ -94,8 +94,35 @@ void inorder(struct bstnode* root)
     
 }
 
+void max(struct bstnode* root)
+{
+  
+    if(root!=NULL)
+    {
+    while((root->right!=NULL))
+    {
+        root=root->right;
+    }
+    printf(" maximum element is present in bst is = %d \n",root->data);
+    }
+}
+    
 
-int main()
+void min(struct bstnode* root)
+{
+    if(root==NULL)
+   {
+     return;
+   }
+      else if(root->left==NULL)
+       {
+           printf("minimum element present in bst is %d",root->data);
+           
+       }
+       
+   min(root->left);
+    }
+ int main()
 {
 struct bstnode *root =NULL;
 while(1)
@@ -106,7 +133,9 @@ printf("\n 2 want to search number ");
 printf("\n 3 want to display numbers in preorder");
 printf("\n 4 want to display numbers in postorder");
 printf("\n 5 want to display numbers in inorder");
-printf("\n 6 exit");
+printf("\n 6 want to find maximum element in bst");
+printf("\n 7 want to find minimum element in bst");
+printf("\n 8 exit");
 printf("\n enter the choice \n");
 
 int ch;
@@ -154,10 +183,21 @@ switch(ch)
     
         break;
     }
-
-    case 6:
+     
+     case 6:
+     {
+         max(root);
+       break;
+     }
+     
+     case 7:
+     {
+         min(root);
+         break;
+     }
+    case 8:
     {
-    printf("4 exit");
+
     exit(0);
         break;
     }
@@ -170,4 +210,6 @@ switch(ch)
 }
 return 0;
 }
+
+
 
