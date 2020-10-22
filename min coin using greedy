@@ -1,0 +1,49 @@
+/* this solution will not pass all the test cases because it's done by greedy technique */ 
+#include<bits/stdc++.h>
+using namespace std;
+class Solution{
+	public:
+	int MinCoin(vector<int>nums, int amount)
+	{
+	    
+	    int i=nums.size()-1;
+	    int count=0;
+	    while(i>=0)
+	    {
+	        
+	        while(amount>=nums[i])
+	        {
+	            
+	            
+	            amount=amount-nums[i];
+	            count++;
+	        }
+	        
+	       
+	            i--;
+	        
+	        }
+	
+	    if(amount==0)
+	    return count;
+	    else
+	    return -1;
+	}
+};
+
+
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int n, amount;
+		cin >> n >> amount;
+		vector<int>nums(n);
+		for(int i = 0; i < n; i++)
+			cin >> nums[i];
+		Solution ob;
+		int ans = ob.MinCoin(nums, amount);
+		cout << ans <<"\n";
+	}
+	return 0;
+}  // }
