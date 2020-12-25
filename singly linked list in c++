@@ -1,0 +1,221 @@
+#include <iostream>
+using namespace std;
+class node
+{
+  public:
+  int data;
+  node *next;
+};
+node *head=NULL;
+int main()
+{
+  while(1)
+  {
+   int option;
+   cin>>option;
+   int x;
+   switch(option)
+   {
+       
+       case 1:
+       {
+       node *start=NULL;
+       
+       
+       cin>>x;
+       node *temp=new node();
+       temp->data=x;
+       temp->next=NULL;
+       if(head==NULL)
+       {
+           head=temp;
+       }
+       else
+       {
+           start=head;
+           while(start->next!=NULL)
+           {
+               start=start->next;
+           }
+           start->next=temp;
+       }
+       }
+       break;
+       case 2:
+       {
+           node *temp1=head;
+           while(temp1!=NULL)
+           {
+               cout<<temp1->data<<" ";
+               temp1=temp1->next;
+           }
+       }
+       break;
+       case 3:
+       {
+           
+            node *start=NULL;
+       
+       
+       cin>>x;
+       node *temp=new node();
+       temp->data=x;
+       temp->next=NULL;
+       
+           if(head==NULL)
+           {
+               head=temp;
+           }
+           else
+           {
+               
+               
+               temp->next=head;
+               head=temp;
+               
+               
+           }
+       }
+       break;
+       case 4:
+       {
+          
+          node *check;
+          check=head;
+          int count=0;
+          int pos;
+          cin>>pos;
+          node *ptr;
+          
+          while(check->next!=NULL)
+          {
+              check=check->next;
+              count++;
+          }
+          if(pos-1>count)
+          {
+              cout<<"NOT POSSIBLE";
+          }
+          
+          else
+          {
+               node *start=NULL;
+       
+       
+       cin>>x;
+       node *temp=new node();
+       temp->data=x;
+       temp->next=NULL;
+              
+          
+          
+          
+          if(head==NULL)
+          {
+              head=temp;
+          }
+          else
+          {
+              ptr=head;
+              int i=1;
+              while(i<pos)
+              {
+                  ptr=ptr->next;
+                  i++;
+              }
+              
+              node temp2;
+              temp->next=ptr->next;
+              ptr->next=temp;
+              
+          
+              
+          }
+          
+              
+          }
+          
+       }
+       break;
+       case 5:
+       {
+           node *del=head;
+           head=del->next;
+           delete(del);
+       }
+       break;
+       case 6:
+       {
+           node *ptr1=head;
+           node *ptr2=NULL;
+           while(ptr1->next!=NULL)
+           {
+               ptr2=ptr1;
+               ptr1=ptr1->next;
+           }
+           delete(ptr1);
+           ptr2->next=NULL;
+       }
+       break;
+       case 7:
+       {
+           node *check;
+          check=head;
+          int count=0;
+          int pos;
+          cin>>pos;
+          node *ptr;
+          
+          while(check->next!=NULL)
+          {
+              check=check->next;
+              count++;
+          }
+          if(pos>count)
+          {
+              cout<<"NOT POSSIBLE";
+          }
+          
+          else
+          {
+               node *start=NULL;
+       
+       
+              
+          
+          
+          
+       
+           ptr=head;
+              int i=1;
+              while(i<pos-1)
+              {
+                  ptr=ptr->next;
+                  i++;
+              }
+              
+              node *temp2=ptr->next;
+              
+             ptr->next =temp2->next;
+             delete(temp2);
+          
+              
+          
+          
+              
+          }
+           
+       }
+       break;
+       case 8:
+       exit(0);
+       break;
+       default:
+       cout<<"wrong choice";
+       break;
+}
+ 
+      
+  } 
+return 0;
+}
