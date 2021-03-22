@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void bfs(vector<int> v[],int src,int n)
+{
+    queue<int> q;
+    
+    int count[n];
+    for(int i=0;i<n;i++)
+    {
+        count[i]=0;
+    }
+    
+    q.push(src);
+    count[src]=1;
+    
+    while(!q.empty())
+    {
+        int x=q.front();
+        cout<<x<<" ";
+        q.pop();
+        
+        for(auto i=v[x].begin();i!=v[x].end();i++)
+        {
+            if(count[*i]!=1)
+            {
+                q.push(*i);
+                count[*i]=1;
+            }
+        }
+    }
+    
+}
+
+int main()
+{
+    int n;
+    cout<<"enter the number of vertices"<<endl;
+    cin>>n;
+    vector<int> v[n];
+    int u,w,e;
+    cout<<"enter the number of edges"<<endl;
+    cin>>e;
+    for(int i=0;i<e;i++)
+    {
+        cout<<"enter the starting vertex"<<endl;
+        cin>>u;
+        cout<<"enter the terminating vertex"<<endl;
+        cin>>w;
+        v[u].push_back(w);
+    }
+    
+    int src;
+    cout<<"enter the source vertex"<<endl;
+    cin>>src;
+    bfs(v,src,n);
+
+    return 0;
+}
+
