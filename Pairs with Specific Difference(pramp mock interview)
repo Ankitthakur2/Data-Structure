@@ -1,0 +1,58 @@
+Given an array arr of distinct integers and a nonnegative integer k, write a function findPairsWithGivenDifference that returns an array of all pairs [x,y] in arr, such that x - y = k. If no such pairs exist, return an empty array.
+
+Note: the order of the pairs in the output array should maintain the order of the y element in the original array.
+
+Examples:
+
+input:  arr = [0, -1, -2, 2, 1], k = 1
+output: [[1, 0], [0, -1], [-1, -2], [2, 1]]
+
+input:  arr = [1, 7, 5, 3, 32, 17, 12], k = 17
+output: []
+Constraints:
+
+[time limit] 5000ms
+
+[input] array.integer arr
+
+0 ≤ arr.length ≤ 100
+[input]integer k
+
+k ≥ 0
+[output] array.array.integer
+#include <iostream>
+#include <vector>
+#include <iterator>
+#include <unordered_map>
+using namespace std;
+
+vector<vector<int>> findPairsWithGivenDifference( const vector<int>& arr, int k) 
+{
+  int n=arr.size();
+  unordered_map<int,int> m;
+  vector<vector<int>> v;
+  for(int i=0;i<n;i++)
+  {
+    m[arr[i]]++;
+  }
+  
+  for(int i=0;i<n;i++)
+  {
+    if(m.find(k+arr[i])!=m.end())
+    {
+      vector<int> ans(2,0);
+       ans[1]=arr[i];
+      ans[0]=k+arr[i];
+        v.push_back(ans);
+    }
+  
+    
+  }
+  return v;
+
+
+}
+
+int main() {
+  return 0;
+}
