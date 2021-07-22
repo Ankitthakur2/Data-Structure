@@ -1,0 +1,77 @@
+Implement pow(x, n) % d.
+
+In other words, given x, n and d,
+
+find   (x^n  % d)
+
+Note that remainders on division cannot be negative. 
+
+In other words, make sure the answer you return is non negative.
+
+Input : x = 2, n = 3, d = 3
+Output : 2
+
+2^3 % 3 = 8 % 3 = 2.
+
+int Solution::pow(int x, int n, int d) {
+
+    if (n == 0) 
+        return 1 % d;
+
+    long long ans = 1, base = x;
+    while (n > 0) 
+    {
+        if (n&1)
+        {
+            ans = (ans * base) % d;
+           
+        } 
+     
+            base = (base * base) % d;
+           n=n>>1;
+        
+    }
+    if (ans < 0) 
+        ans = (ans + d) % d;
+    return ans;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+   int res=1;
+   if(x==0)
+    return 0;
+    if(n==0)
+     return 1;
+   if(x >= 0) 
+   x= x % d ;
+   else
+   x= (d - abs ( x%d ) ) % d; 
+
+   while(n>0)
+   {
+       if(n&1)
+       {
+           res=(res*x)%d;
+       }
+       x=(x*x)%d;
+       n=n>>1;
+   }
+
+   return res;
+  
+}
+*/
