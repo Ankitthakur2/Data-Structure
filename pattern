@@ -1,0 +1,69 @@
+/*
+
+Print the following pattern using C/C++
+
+(For n=4)
+
+1
+2*3
+4*5*6
+7*8*9*10
+7*8*9*10
+4*5*6
+2*3
+1
+
+
+*/
+
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout<<"Enter the value of n ";
+    
+    cin>>n;
+    int sum=0;
+    stack<vector<int>> s;
+    for(int i=0;i<n;i++)
+    {
+         vector<int> v;
+        for(int j=0;j<=i;j++)
+        {
+            sum=sum+1;
+            v.push_back(sum);
+            cout<<sum;
+            
+            if(j<i)
+             cout<<"*";
+        }
+         s.push(v);
+        cout<<endl;
+    }
+    
+    
+   while(!s.empty())
+   {
+       
+       vector<int> p=s.top();
+       s.pop();
+       
+       for(int i=0;i<p.size();i++)
+       {
+           cout<<p[i];
+           if(i<s.size())
+             cout<<"*";
+       }
+       cout<<endl;
+       
+   }
+    
+    return 0;
+}
